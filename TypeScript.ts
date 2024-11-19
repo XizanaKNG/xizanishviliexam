@@ -1,34 +1,39 @@
-//! დაწერეთ არსებული კოდი Typescript-ში:
-
 // მაგალითი 1
 
-let name = "Alice";
+let name: string = "Alice";
 
 // მაგალითი 2
 
-let numbers = [1, 2, 3];
+let numbers: number[] = [1, 2, 3];
 
 // მაგალითი 3
 
-function multiply(a, b) {
+function multiply(a: number, b: number): number {
   return a * b;
 }
 
 // მაგალითი 4
 
-const user = { id: 1, name: "Alice" };
+const user: { id: number; name: string } = { id: 1, name: "Alice" };
 
 // მაგალითი 5
 // რისთვის ვიყენებთ არსებული კოდში = Guest-ს :
 
-function greet(name: string = "Guest") {}
-
-// პასუხი:
+function greet(name: string = "Guest"): void {}
 
 // მაგალითი 6
-// დაწერეთ ტიპი რომელიც მოერგება ყველა ქვემოთ ჩამოთვლილ ელემენტს. მაგ: type Config = {
+// დაწერეთ ტიპი რომელიც მოერგება ყველა ქვემოთ ჩამოთვლილ ელემენტს.
 
-const config1 = {
+type Config = {
+  theme?: string;
+  options?: {
+    fontSize?: number;
+    layout?: any;
+  };
+  tester?: string;
+};
+
+const config1: Config = {
   theme: "dark",
   options: {
     fontSize: 16,
@@ -36,19 +41,22 @@ const config1 = {
   },
 };
 
-const config2 = {
+const config2: Config = {
   theme: "dark",
 };
 
-const config3 = {
+const config3: Config = {
   tester: "test",
 };
 
 // მაგალითი 7
-// დაწერეთ ტიპი რომელიც მოერგება ყველა ქვემოთ ჩამოთვლილ ელემენტს. მაგ: type MixedArray =
-const array1 = [42, "hello", { name: "Alice" }];
-const array2 = ["apple", true, { isValid: false }];
-const array3 = [];
+// დაწერეთ ტიპი რომელიც მოერგება ყველა ქვემოთ ჩამოთვლილ ელემენტს.
+
+type MixedArray = (number | string | boolean | { [key: string]: any })[];
+
+const array1: MixedArray = [42, "hello", { name: "Alice" }];
+const array2: MixedArray = ["apple", true, { isValid: false }];
+const array3: MixedArray = [];
 
 // მაგალითი 8
 // აღწერეთ რისი ტიპიზაცია ხდება არსებულ კოდში წერილობით
@@ -59,11 +67,29 @@ type Handler = {
   log?: () => void;
 };
 
+// Handler ტიპი გამოიყენება ფუნქციების და მეთოდების ტიპიზაციისთვის, სადაც ყველა მათგანი არის არავალდებული და შეიძლება სხვადასხვა ამოცანებისთვის იყოს გამოყენებული.
+
 // მაგალითი 9
+// შექმენით ტიპი მონაცემისთვის:
 
-// შექმენით ტიპი მონაცემისთივს:
-
-type User = {};
+type User = {
+  id: number;
+  username: string;
+  isAdmin: boolean;
+  profile: {
+    fullName: string;
+    age: number;
+    interests: string[];
+  };
+  settings: {
+    theme: string;
+    notifications: {
+      email: boolean;
+      sms: boolean;
+    };
+  };
+  metadata?: any;
+};
 
 const user: User = {
   id: 101,
