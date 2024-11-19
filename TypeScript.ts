@@ -1,6 +1,6 @@
 // მაგალითი 1
 
-let name: string = "Alice";
+let name1: string = "Alice";
 
 // მაგალითი 2
 
@@ -91,7 +91,7 @@ type User = {
   metadata?: any;
 };
 
-const user: User = {
+const user1: User = {
   id: 101,
   username: "tech_learner",
   isAdmin: false,
